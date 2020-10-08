@@ -2,7 +2,7 @@ to build this project
 
 ```bash
 $ npm i
-$ cd ../react
+$ cd ../react-app
 $ npm i
 $ npm run build
 ```
