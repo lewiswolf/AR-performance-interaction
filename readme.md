@@ -1,7 +1,6 @@
 to build this project
 
 ```bash
-$ cd ./node
 $ npm i
 $ cd ../react
 $ npm i
