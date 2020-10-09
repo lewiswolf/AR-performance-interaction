@@ -5,11 +5,11 @@ import './index.scss';
 
 export default function App() {
 
-  React.useEffect(() => {
-    const key = 'need to set an active key!!'
-    Analytics.initialize(key);
-    Analytics.pageview(window.location.pathname);
-  });
+  // React.useEffect(() => {
+  //   const key = 'need to set an active key!!'
+  //   Analytics.initialize(key);
+  //   Analytics.pageview(window.location.pathname);
+  // });
 
   return (
     <main>
