@@ -17,7 +17,7 @@ app.get('*', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-    Max.outlet(req.body.message)
+    Max.outlet(req.body)
     res.json({ msg: 'success' })
 })
 
