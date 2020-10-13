@@ -1,0 +1,63 @@
+<head>
+    <title>AR</title>
+    <!--  Include A-Frame and AR.js  -->
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+
+    <!--  Meta for apple's picky mobile devices  -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+</head>
+
+<body>
+    <script>
+        // Vidhandler toggles visibility of live-streamed video
+        AFRAME.registerComponent('vidhandler', {
+            init: function () {
+                this.toggle = false;
+                this.vid = document.querySelector('video');
+            },
+            tick:function(){
+                if(this.el.object3D.visible === true){
+                    if(!this.toggle){
+                        this.toggle = true;
+                        this.vid.style.visibility = "visible";
+                        // this.vid.play();
+                    }
+                }else{
+                    if(this.toggle){
+                        this.toggle = false;
+                        // this.vid.pause();
+                        this.vid.style.visibility = "hidden";
+                    }
+                }
+            }
+        });
+
+        window.onload = () => {
+            // Hide livestream video initially
+            document.querySelector('video').style.visibility = 'hidden';
+        }
+    </script>
+
+    <video id="video"
+           preload="auto"
+           class="video-js"
+           webkit-playsinline
+           playsinline
+           autoplay
+           loop
+           crossorigin="anonymous"
+           muted>
+        <!--  Source is just a demo bloomberg (don't judge) livestream for now  -->
+        <source src='https://liveprodeuwest.akamaized.net/eu1/Channel-EUTVqvs-AWS-ireland-1/Source-EUTVqvs-700-1_live.m3u8' type='application/x-mpegURL'>
+    </video>
+
+    <a-scene embedded arjs>
+        <a-marker preset='hiro' vidhandler>
+            <!-- This would work if Apple wasn't stupid and broke iOS 14 -->
+    <!--        <a-plane position='0 0 0' rotation="-90 0 0" width="4" height="4" material='transparent:true;opacity: 0.7;src:#video'></a-plane>-->
+    <!--        <a-video src="#video" position='0 0 0' width="3" height="1" rotation="-90 0 0"></a-video>-->
+        </a-marker>
+        <a-entity camera></a-entity>
+    </a-scene>
+</body>

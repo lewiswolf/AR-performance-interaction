@@ -2,9 +2,9 @@ to build this project
 
 ```bash
 $ npm i
-$ cd ../react-app
+$ cd ../web-app
 $ npm i
-$ npm run build
+$ npm run start
 ```
 
 lastly add the max msp dependencies to your packages folder

@@ -10,10 +10,10 @@ app.use((req, res, next) => {
 })
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, './react-app/build/')))
+app.use(express.static(path.join(__dirname, './web-app/build/')))
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, './react-app/build/index.html'))
+    res.sendFile(path.join(__dirname, './web-app/build/index.html'))
 })
 
 app.post('/', (req, res) => {
