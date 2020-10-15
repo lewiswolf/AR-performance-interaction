@@ -1,63 +1,78 @@
 <head>
-    <title>AR</title>
-    <!--  Include A-Frame and AR.js  -->
-    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+	<meta charset="utf-8" />
+	<link rel="icon" href="favicon.ico" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>AR</title>
+	<meta name="description" content="A recreation of https://zenodo.org/record/3672860#.X39mSHhKjly" />
 
-    <!--  Meta for apple's picky mobile devices  -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
+	<!-- pwa stuff, could be removed for simplicity -->
+	<link rel="apple-touch-icon" href="logo192.png" />
+	<link rel="manifest" href="manifest.json" />
+	<meta name="theme-color" content="#000000" />
+
+	<!--  Include A-Frame and AR.js  -->
+	<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+	<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+
+	<!--  Meta for apple's picky mobile devices  -->
+	<meta name="apple-mobile-web-app-capable" content="yes" />
 </head>
 
 <body>
-    <script>
-        // Vidhandler toggles visibility of live-streamed video
-        AFRAME.registerComponent('vidhandler', {
-            init: function () {
-                this.toggle = false;
-                this.vid = document.querySelector('video');
-            },
-            tick:function(){
-                if(this.el.object3D.visible === true){
-                    if(!this.toggle){
-                        this.toggle = true;
-                        this.vid.style.visibility = "visible";
-                        // this.vid.play();
-                    }
-                }else{
-                    if(this.toggle){
-                        this.toggle = false;
-                        // this.vid.pause();
-                        this.vid.style.visibility = "hidden";
-                    }
-                }
-            }
-        });
+	<script>
+		// Vidhandler toggles visibility of live-streamed video
+		AFRAME.registerComponent('vidhandler', {
+			init: function () {
+				this.toggle = false
+				this.vid = document.querySelector('video')
+			},
+			tick: function () {
+				if (this.el.object3D.visible === true) {
+					if (!this.toggle) {
+						this.toggle = true
+						this.vid.style.visibility = 'visible'
+						// this.vid.play();
+					}
+				} else {
+					if (this.toggle) {
+						this.toggle = false
+						// this.vid.pause();
+						this.vid.style.visibility = 'hidden'
+					}
+				}
+			},
+		})
 
-        window.onload = () => {
-            // Hide livestream video initially
-            document.querySelector('video').style.visibility = 'hidden';
-        }
-    </script>
+		window.onload = () => {
+			// Hide livestream video initially
+			document.querySelector('video').style.visibility = 'hidden'
+		}
+	</script>
 
-    <video id="video"
-           preload="auto"
-           class="video-js"
-           webkit-playsinline
-           playsinline
-           autoplay
-           loop
-           crossorigin="anonymous"
-           muted>
-        <!--  Source is just a demo bloomberg (don't judge) livestream for now  -->
-        <source src='https://liveprodeuwest.akamaized.net/eu1/Channel-EUTVqvs-AWS-ireland-1/Source-EUTVqvs-700-1_live.m3u8' type='application/x-mpegURL'>
-    </video>
+	<video
+		id="video"
+		preload="auto"
+		class="video-js"
+		webkit-playsinline
+		playsinline
+		autoplay
+		loop
+		crossorigin="anonymous"
+		muted
+	>
+		<!--  Source is just a demo bloomberg (don't judge) livestream for now  -->
+		<source
+			src="https://liveprodeuwest.akamaized.net/eu1/Channel-EUTVqvs-AWS-ireland-1/Source-EUTVqvs-700-1_live.m3u8"
+			type="application/x-mpegURL"
+		/>
+	</video>
 
-    <a-scene embedded arjs>
-        <a-marker preset='hiro' vidhandler>
-            <!-- This would work if Apple wasn't stupid and broke iOS 14 -->
-    <!--        <a-plane position='0 0 0' rotation="-90 0 0" width="4" height="4" material='transparent:true;opacity: 0.7;src:#video'></a-plane>-->
-    <!--        <a-video src="#video" position='0 0 0' width="3" height="1" rotation="-90 0 0"></a-video>-->
-        </a-marker>
-        <a-entity camera></a-entity>
-    </a-scene>
+	<a-scene embedded arjs>
+		<a-marker preset="hiro" vidhandler>
+			<!-- This would work if Apple wasn't stupid and broke iOS 14 -->
+			<!--        <a-plane position='0 0 0' rotation="-90 0 0" width="4" height="4" material='transparent:true;opacity: 0.7;src:#video'></a-plane>-->
+			<!--        <a-video src="#video" position='0 0 0' width="3" height="1" rotation="-90 0 0"></a-video>-->
+		</a-marker>
+		<a-entity camera></a-entity>
+	</a-scene>
 </body>
