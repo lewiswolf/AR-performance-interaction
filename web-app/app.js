@@ -16,6 +16,8 @@ var credentials = {key: privateKey, cert: certificate};
 var app = express();
 var httpsServer = https.createServer(credentials, app);
 
+httpsServer.listen(port);
+
 // Lay down standard route
 app.get("/", function (req, res){
     // Be nice and greet
@@ -36,8 +38,6 @@ app.get("/", function (req, res){
     res.writeHead(200, { 'content-type': 'text/html' });
     fs.createReadStream('index.html').pipe(res);
 })
-
-httpsServer.listen(port);
 
 // If we ever want to stream video from the server's filesystem
 // app.get('/video', function(req, res) {
