@@ -19,5 +19,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # package specific
+*.pem
 unused
 todo.md
