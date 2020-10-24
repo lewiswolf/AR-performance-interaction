@@ -49,6 +49,7 @@ const addHoldListener = (element, id, func) => {
     setStyles(false)
 }
 
+// create buttons
 addHoldListener(
     document.getElementById('gyroButton'),
     'Gyroscope',
