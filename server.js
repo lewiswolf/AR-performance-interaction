@@ -1,3 +1,4 @@
+'use strict'
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser')
@@ -10,10 +11,10 @@ app.use((req, res, next) => {
 })
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, './web-app/build/')))
+app.use(express.static(path.join(__dirname, 'web-app')))
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, './web-app/build/index.html'))
+    res.sendFile(path.join(__dirname, 'web-app/index.html'))
 })
 
 app.post('/', (req, res) => {
