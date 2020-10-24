@@ -1,0 +1,38 @@
+html,
+body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	font-family: helvetica;
+	display: flex;
+	position: relative;
+}
+
+/* hide vr button */
+a-scene > div.a-enter-vr > button {
+	display: none;
+}
+
+/* my buttons */
+button {
+	height: 50px;
+	width: 50%;
+	outline: 0;
+	border: 0;
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 14px;
+	font-family: inherit;
+	position: absolute;
+	z-index: 100;
+	bottom: 0;
+}
+
+button:first-of-type {
+	left: 0;
+}
+
+button:last-of-type {
+	right: 0;
+}

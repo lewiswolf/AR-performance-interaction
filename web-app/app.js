@@ -1,25 +1,30 @@
+'use strict'
 const https = require('https')
 const fs = require('fs')
+const path = require('path')
 const express = require('express');
 
 // Server port
 const port = 4000;
 
 // Local private key and certificate for hosting over HTTPS locally
-var privateKey  = fs.readFileSync('key.pem', 'utf8');
-var certificate = fs.readFileSync('cert.pem', 'utf8');
+const privateKey = fs.readFileSync('key.pem', 'utf8');
+const certificate = fs.readFileSync('cert.pem', 'utf8');
 
 // Create credentials object
-var credentials = {key: privateKey, cert: certificate};
+const credentials = { key: privateKey, cert: certificate };
 
 // Use express.js to create the server (mainly for routing)
-var app = express();
-var httpsServer = https.createServer(credentials, app);
+const app = express();
+const httpsServer = https.createServer(credentials, app);
+
+// express targets this directory
+app.use(express.static(__dirname))
 
 httpsServer.listen(port);
 
 // Lay down standard route
-app.get("/", function (req, res){
+app.get('/', (req, res) => {
     // Be nice and greet
     console.log("hello");
 
@@ -36,7 +41,7 @@ app.get("/", function (req, res){
 
     // Send the index.html file as response
     res.writeHead(200, { 'content-type': 'text/html' });
-    fs.createReadStream('index.html').pipe(res);
+    fs.createReadStream(path.join(__dirname, 'index.html')).pipe(res);
 })
 
 // If we ever want to stream video from the server's filesystem

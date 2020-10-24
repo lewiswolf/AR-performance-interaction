@@ -1,14 +1,12 @@
 <head>
 	<meta charset="utf-8" />
-	<link rel="icon" href="favicon.ico" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>AR</title>
 	<meta name="description" content="A recreation of https://zenodo.org/record/3672860#.X39mSHhKjly" />
+	<link rel="icon" href="/favicon.ico" />
 
-	<!-- pwa stuff, could be removed for simplicity -->
-	<link rel="apple-touch-icon" href="logo192.png" />
-	<link rel="manifest" href="manifest.json" />
-	<meta name="theme-color" content="#000000" />
+	<!-- css -->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" type="text/css" href="/index.css" />
 
 	<!--  Include A-Frame and AR.js  -->
 	<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
@@ -16,6 +14,32 @@
 
 	<!--  Meta for apple's picky mobile devices  -->
 	<meta name="apple-mobile-web-app-capable" content="yes" />
+
+	<!-- import axios -->
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+	<!-- Google Analytics -->
+	<!-- <script>
+		// init ga
+		;(function (i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r
+			;(i[r] =
+				i[r] ||
+				function () {
+					;(i[r].q = i[r].q || []).push(arguments)
+				}),
+				(i[r].l = 1 * new Date())
+			;(a = s.createElement(o)), (m = s.getElementsByTagName(o)[0])
+			a.async = 1
+			a.src = g
+			m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga')
+
+		// out code
+		ga('create', 'UA-XXXXX-Y', 'auto')
+		ga('send', 'pageview')
+	</script> -->
+	<!-- End Google Analytics -->
 </head>
 
 <body>
@@ -70,9 +94,14 @@
 	<a-scene embedded arjs>
 		<a-marker preset="hiro" vidhandler>
 			<!-- This would work if Apple wasn't stupid and broke iOS 14 -->
-			<!--        <a-plane position='0 0 0' rotation="-90 0 0" width="4" height="4" material='transparent:true;opacity: 0.7;src:#video'></a-plane>-->
-			<!--        <a-video src="#video" position='0 0 0' width="3" height="1" rotation="-90 0 0"></a-video>-->
+			<!-- <a-plane position='0 0 0' rotation="-90 0 0" width="4" height="4" material='transparent:true;opacity: 0.7;src:#video'></a-plane> -->
+			<!-- <a-video src="#video" position='0 0 0' width="3" height="1" rotation="-90 0 0"></a-video> -->
 		</a-marker>
 		<a-entity camera></a-entity>
 	</a-scene>
+
+	<!-- buttons for motion -->
+	<button id="gyroButton"></button>
+	<button id="accelButton"></button>
+	<script src="sensors.js"></script>
 </body>

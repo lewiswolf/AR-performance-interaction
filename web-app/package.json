@@ -5,9 +5,7 @@
 	"dependencies": {
 		"@testing-library/jest-dom": "^4.2.4",
 		"@testing-library/user-event": "^7.2.1",
-		"axios": "^0.20.0",
 		"express": "^4.17.1",
-		"node-sass": "^4.14.1",
 		"three": "^0.121.1"
 	},
 	"scripts": {
