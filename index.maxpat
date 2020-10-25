@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 7,
+			"revision" : 6,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 79.0, 946.0, 504.0 ],
+		"rect" : [ 156.0, -1015.0, 1206.0, 689.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -71,7 +71,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 7,
+							"revision" : 6,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -354,8 +354,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 568.0, 106.0, 227.0, 35.0 ],
-					"text" : ";\rmax launchbrowser http://localhost:4000"
+					"patching_rect" : [ 568.0, 106.0, 229.0, 35.0 ],
+					"text" : ";\rmax launchbrowser https://localhost:4000"
 				}
 
 			}
@@ -399,8 +399,6 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 1,
 						"defer" : 0,
-						"node_bin_path" : "",
-						"npm_bin_path" : "",
 						"watch" : 1
 					}
 ,
@@ -469,8 +467,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 349.0, 107.0, 136.0, 22.0 ],
-					"text" : "url http://localhost:4000"
+					"patching_rect" : [ 349.0, 107.0, 139.0, 22.0 ],
+					"text" : "url https://localhost:4000"
 				}
 
 			}
@@ -544,7 +542,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "server.js",
-				"bootpath" : "~/Documents/PhD/Modules/Research Methods/Assignment III/AR-performance-interaction",
+				"bootpath" : "~/WebstormProjects/AR-performance-interaction",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
@@ -621,8 +619,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"fontsize" : [ 12.059008 ],
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
+					"fontsize" : [ 12.059008 ]
 				}
 ,
 				"parentstyle" : "",
