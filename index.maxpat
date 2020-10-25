@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 6,
+			"revision" : 7,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 156.0, -1015.0, 1206.0, 689.0 ],
+		"rect" : [ 34.0, 105.0, 946.0, 478.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -71,7 +71,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 6,
+							"revision" : 7,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -109,11 +109,11 @@
 								"box" : 								{
 									"id" : "obj-59",
 									"maxclass" : "newobj",
-									"numinlets" : 2,
+									"numinlets" : 3,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 177.5, 257.0, 100.0, 22.0 ],
-									"text" : "combine ip :4000"
+									"patching_rect" : [ 138.5, 258.52910053730011, 205.0, 22.0 ],
+									"text" : "combine https:// ip :4000 @triggers 1"
 								}
 
 							}
@@ -124,7 +124,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "bang", "" ],
-									"patching_rect" : [ 119.0, 225.0, 77.5, 22.0 ],
+									"patching_rect" : [ 119.0, 225.0, 131.5, 22.0 ],
 									"text" : "t b l"
 								}
 
@@ -136,7 +136,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 177.5, 289.0, 81.0, 22.0 ],
+									"patching_rect" : [ 138.5, 287.0, 81.0, 22.0 ],
 									"text" : "prepend label"
 								}
 
@@ -148,7 +148,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "bang", "bang" ],
-									"patching_rect" : [ 177.5, 321.0, 96.0, 22.0 ],
+									"patching_rect" : [ 138.5, 321.0, 96.0, 22.0 ],
 									"text" : "dialog @mode 1"
 								}
 
@@ -276,14 +276,14 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-48", 0 ],
-									"midpoints" : [ 128.5, 314.0, 187.0, 314.0 ],
+									"midpoints" : [ 128.5, 314.52910053730011, 148.0, 314.52910053730011 ],
 									"source" : [ "obj-56", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-59", 0 ],
+									"destination" : [ "obj-59", 1 ],
 									"source" : [ "obj-56", 1 ]
 								}
 
@@ -399,6 +399,8 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 1,
 						"defer" : 0,
+						"node_bin_path" : "",
+						"npm_bin_path" : "",
 						"watch" : 1
 					}
 ,
@@ -441,7 +443,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 18.0, 85.0, 577.0, 357.0 ],
 					"rendermode" : 0,
-					"url" : "http://localhost:4000"
+					"url" : "https://localhost:4000"
 				}
 
 			}
@@ -542,7 +544,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "server.js",
-				"bootpath" : "~/WebstormProjects/AR-performance-interaction",
+				"bootpath" : "~/Documents/PhD/Modules/Research Methods/Assignment III/AR-performance-interaction",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
