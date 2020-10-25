@@ -1,9 +1,37 @@
-// gui && polling
-const addHoldListener = (element, id, func) => {
+/*
+    DESIGN PATTERNS NOT YET IMPLEMENTED:
+
+    -   I want to have the event listeners for deviceorientation and devicerotation mount only when the button is held down, 
+        and unmount when the button is relased. this will help streamline processing for better video quality.
+        
+*/
+
+let deviceOrientation = {
+    alpha: null,
+    beta: null,
+    gamma: null,
+}
+
+const getDeviceOrientation = (e) => {
+    deviceOrientation = {
+        alpha: e.alpha,
+        beta: e.beta,
+        gamma: e.gamma,
+    }
+}
+
+window.addEventListener('deviceorientation', getDeviceOrientation)
+
+// button constructors for GUI && polling
+const addHoldListener = (element, id) => {
     // set the polling rate for the sensors in ms
     const pollingRate = 100
     // empty setInterval
     let timer
+
+    const post2server = () => {
+        axios.post('/', deviceOrientation)
+    }
 
     const touchWrapper = (e) => {
         if (e.cancelable) {
@@ -13,8 +41,8 @@ const addHoldListener = (element, id, func) => {
     }
 
     const downListener = () => {
-        timer = setInterval(func, pollingRate)
-        func()
+        timer = setInterval(post2server, pollingRate)
+        post2server()
         setStyles(true)
 
         // add mouseup listeners
@@ -53,11 +81,10 @@ const addHoldListener = (element, id, func) => {
 addHoldListener(
     document.getElementById('gyroButton'),
     'Gyroscope',
-    () => axios.post('/', { message: 'this a message from react to max' })
 )
 
-addHoldListener(
-    document.getElementById('accelButton'),
-    'Accelorometer',
-    () => axios.post('/', { message: 'this a message from react to max' })
-)
+// addHoldListener(
+//     document.getElementById('accelButton'),
+//     'Accelorometer',
+//     () => axios.post('/', { message: 'this a message from react to max' })
+// )
