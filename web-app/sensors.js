@@ -1,9 +1,10 @@
-/*
-    DESIGN PATTERNS NOT YET IMPLEMENTED:
+// set the polling rate for the sensors in ms
+const pollingRate = 100
 
-    -   I want to have the event listeners for deviceorientation and devicerotation mount only when the button is held down, 
-        and unmount when the button is relased. this will help streamline processing for better video quality.
-        
+// there should be another button you click to start the app and grant all the permissions
+
+/* 
+    GYRO
 */
 
 let deviceOrientation = {
@@ -20,18 +21,11 @@ const getDeviceOrientation = (e) => {
     }
 }
 
-window.addEventListener('deviceorientation', getDeviceOrientation)
-
-// button constructors for GUI && polling
-const addHoldListener = (element, id) => {
-    // set the polling rate for the sensors in ms
-    const pollingRate = 100
-    // empty setInterval
-    let timer
-
-    const post2server = () => {
-        axios.post('/', deviceOrientation)
-    }
+// button constructor
+const addGyroListener = (() => {
+    let element = document.getElementById('gyroButton')
+    let timer // empty setInterval
+    let permissionState = null // permissions for listener
 
     const touchWrapper = (e) => {
         if (e.cancelable) {
@@ -41,18 +35,34 @@ const addHoldListener = (element, id) => {
     }
 
     const downListener = () => {
-        timer = setInterval(post2server, pollingRate)
-        post2server()
         setStyles(true)
-
         // add mouseup listeners
         element.addEventListener('touchend', upListener)
         element.addEventListener('touchcancel', upListener)
         window.addEventListener('mouseup', upListener)
+
+        if (permissionState) {
+            const post2server = () => {
+                axios.post('/', deviceOrientation)
+            }
+            // add listener and start sending
+            window.addEventListener('deviceorientation', getDeviceOrientation)
+            timer = setInterval(post2server, pollingRate)
+        }
     }
 
-    const upListener = () => {
-        clearInterval(timer)
+    const upListener = async () => {
+        // if !permission, request it!
+        if (!permissionState && typeof DeviceOrientationEvent.requestPermission === 'function') {
+            permissionState = await DeviceOrientationEvent.requestPermission()
+        }
+
+        // stop timer and remove listener
+        if (permissionState) {
+            clearInterval(timer)
+            removeEventListener('deviceorientation', getDeviceOrientation)
+        }
+
         setStyles(false)
 
         // remove mouseup listeners
@@ -62,7 +72,7 @@ const addHoldListener = (element, id) => {
     }
 
     const setStyles = (bool) => {
-        element.innerText = `${id} ${bool ? 'Listening' : 'Off'}`
+        element.innerText = `Gyroscope ${bool ? 'Listening' : 'Off'}`
         Object.assign(element.style, {
             color: bool ? 'slategrey' : 'whitesmoke',
             background: bool ? 'palegreen' : 'palevioletred'
@@ -75,16 +85,90 @@ const addHoldListener = (element, id) => {
     element.addEventListener('mousedown', downListener)
     // set default text
     setStyles(false)
+})()
+
+
+/* 
+    ROTATIOM
+*/
+
+let deviceMotion = {
+    x: null,
+    y: null,
+    z: null,
 }
 
-// create buttons
-addHoldListener(
-    document.getElementById('gyroButton'),
-    'Gyroscope',
-)
+const getDeviceMotion = (e) => {
+    deviceMotion = {
+        x: e.accelerationIncludingGravity.x,
+        y: e.accelerationIncludingGravity.y,
+        z: e.accelerationIncludingGravity.z,
+    }
+}
 
-// addHoldListener(
-//     document.getElementById('accelButton'),
-//     'Accelorometer',
-//     () => axios.post('/', { message: 'this a message from react to max' })
-// )
+
+// button constructor
+const addAccelListener = (() => {
+    let element = document.getElementById('accelButton')
+    let timer // empty setInterval
+    let permissionState = null // permissions for listener
+
+    const touchWrapper = (e) => {
+        if (e.cancelable) {
+            e.preventDefault()
+            downListener()
+        }
+    }
+
+    const downListener = () => {
+        setStyles(true)
+        // add mouseup listeners
+        element.addEventListener('touchend', upListener)
+        element.addEventListener('touchcancel', upListener)
+        window.addEventListener('mouseup', upListener)
+
+        if (permissionState) {
+            const post2server = () => {
+                axios.post('/', deviceMotion)
+            }
+            // add listener and start sending
+            window.addEventListener('devicemotion', getDeviceMotion)
+            timer = setInterval(post2server, pollingRate)
+        }
+    }
+
+    const upListener = async () => {
+        // if !permission, request it!
+        if (!permissionState && typeof DeviceMotionEvent.requestPermission === 'function') {
+            permissionState = await DeviceMotionEvent.requestPermission()
+        }
+
+        // stop timer and remove listener
+        if (permissionState) {
+            clearInterval(timer)
+            removeEventListener('devicemotion', getDeviceMotion)
+        }
+
+        setStyles(false)
+
+        // remove mouseup listeners
+        element.removeEventListener('touchend', upListener)
+        element.removeEventListener('touchcancel', upListener)
+        window.removeEventListener('mouseup', upListener)
+    }
+
+    const setStyles = (bool) => {
+        element.innerText = `Accelerometer ${bool ? 'Listening' : 'Off'}`
+        Object.assign(element.style, {
+            color: bool ? 'slategrey' : 'whitesmoke',
+            background: bool ? 'palegreen' : 'palevioletred'
+        })
+    }
+
+    // add default listeners
+    element.addEventListener('touchstart', touchWrapper)
+    element.addEventListener('touchmove', (e) => e.preventDefault())
+    element.addEventListener('mousedown', downListener)
+    // set default text
+    setStyles(false)
+})()
