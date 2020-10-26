@@ -18,9 +18,6 @@ const credentials = { key: privateKey, cert: certificate };
 const app = express();
 const httpsServer = https.createServer(credentials, app);
 
-// express targets this directory
-app.use(express.static(__dirname))
-
 httpsServer.listen(port);
 
 // Lay down standard route
@@ -43,6 +40,9 @@ app.get('/', (req, res) => {
     res.writeHead(200, { 'content-type': 'text/html' });
     fs.createReadStream(path.join(__dirname, 'index.html')).pipe(res);
 })
+
+// express uses this directory for all subsequent requests
+app.use(express.static(__dirname))
 
 // If we ever want to stream video from the server's filesystem
 // app.get('/video', function(req, res) {
