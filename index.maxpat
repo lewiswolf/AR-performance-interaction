@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 7,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -71,7 +71,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 7,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -305,7 +305,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 819.0, 106.0, 129.0, 22.0 ],
+					"patching_rect" : [ 563.0, 107.0, 129.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -326,9 +326,9 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 819.0, 60.0, 129.0, 23.0 ],
+					"patching_rect" : [ 563.0, 61.0, 129.0, 23.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 452.0, 12.0, 143.0, 24.0 ],
+					"presentation_rect" : [ 18.0, 50.0, 143.0, 24.0 ],
 					"text" : "Local Network Access",
 					"textoncolor" : [ 0.905882352941176, 0.925490196078431, 0.925490196078431, 1.0 ]
 				}
@@ -354,7 +354,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 568.0, 106.0, 229.0, 35.0 ],
+					"patching_rect" : [ 320.0, 107.0, 229.0, 35.0 ],
 					"text" : ";\rmax launchbrowser https://localhost:4000"
 				}
 
@@ -368,9 +368,9 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 568.0, 60.0, 169.0, 24.0 ],
+					"patching_rect" : [ 320.0, 61.0, 169.0, 24.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 452.0, 46.5, 143.0, 24.0 ],
+					"presentation_rect" : [ 18.0, 84.5, 143.0, 24.0 ],
 					"text" : "Launch Browser",
 					"textoncolor" : [ 0.905882352941176, 0.925490196078431, 0.925490196078431, 1.0 ]
 				}
@@ -399,24 +399,10 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 1,
 						"defer" : 0,
-						"node_bin_path" : "",
-						"npm_bin_path" : "",
 						"watch" : 1
 					}
 ,
 					"text" : "node.script server.js @autostart 1 @watch 1"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-11",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 498.0, 107.0, 42.0, 22.0 ],
-					"text" : "reload"
 				}
 
 			}
@@ -427,23 +413,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 349.0, 13.0, 58.0, 22.0 ],
+					"patching_rect" : [ 54.0, 60.0, 58.0, 22.0 ],
 					"text" : "loadbang"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-6",
-					"maxclass" : "jweb",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 349.0, 160.0, 599.0, 357.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 18.0, 85.0, 577.0, 357.0 ],
-					"rendermode" : 0,
-					"url" : "https://localhost:4000"
 				}
 
 			}
@@ -457,33 +428,13 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 18.0, 13.0, 256.0, 24.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 18.0, 12.0, 256.0, 24.0 ],
+					"presentation_rect" : [ 18.0, 12.0, 172.0, 24.0 ],
 					"text" : "AR with Max and Max"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-9",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 349.0, 107.0, 139.0, 22.0 ],
-					"text" : "url https://localhost:4000"
 				}
 
 			}
  ],
 		"lines" : [ 			{
-				"patchline" : 				{
-					"destination" : [ "obj-6", 0 ],
-					"midpoints" : [ 507.5, 147.5, 358.5, 147.5 ],
-					"source" : [ "obj-11", 0 ]
-				}
-
-			}
-, 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
 					"source" : [ "obj-12", 0 ]
@@ -521,23 +472,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-16", 0 ],
-					"order" : 1,
 					"source" : [ "obj-7", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-9", 0 ],
-					"order" : 0,
-					"source" : [ "obj-7", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-6", 0 ],
-					"source" : [ "obj-9", 0 ]
 				}
 
 			}
@@ -621,8 +556,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-					"fontsize" : [ 12.059008 ]
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
