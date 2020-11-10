@@ -4,6 +4,9 @@ const fs = require('fs')
 const path = require('path')
 const express = require('express');
 
+// Dev or production
+let ISDEV = false;
+
 // Server port
 const port = 4000;
 
@@ -16,9 +19,9 @@ const credentials = { key: privateKey, cert: certificate };
 
 // Use express.js to create the server (mainly for routing)
 const app = express();
-const httpsServer = https.createServer(credentials, app);
 
-httpsServer.listen(port);
+// express uses this directory for all subsequent requests
+app.use(express.static(__dirname));
 
 // Lay down standard route
 app.get('/', (req, res) => {
@@ -28,21 +31,25 @@ app.get('/', (req, res) => {
     // Allow streaming content of any kind
     // Website you wish to allow to connect
     res.setHeader('Access-Control-Allow-Origin', '*');
-    // Request methods you wish to allow
+    // // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', true);
+    // // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With, X-Api-Key');
 
     // Send the index.html file as response
-    res.writeHead(200, { 'content-type': 'text/html' });
-    fs.createReadStream(path.join(__dirname, 'index.html')).pipe(res);
+    // res.writeHead(200, { 'content-type': 'text/html' });
+    res.sendFile(__dirname + '/index.html');
 })
 
-// express uses this directory for all subsequent requests
-app.use(express.static(__dirname))
+if(ISDEV){
+    console.log("local");
+    const httpsServer = https.createServer(credentials, app);
+    httpsServer.listen(port);
+}
+ else {
+     console.log("onlineee");
+     app.listen(port);
+}
 
 // If we ever want to stream video from the server's filesystem
 // app.get('/video', function(req, res) {
