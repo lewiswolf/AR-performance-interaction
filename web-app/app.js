@@ -8,7 +8,7 @@ const express = require('express');
 let ISDEV = false;
 
 // Server port
-const port = 4000;
+const port = ISDEV ? 4000 : 5000;
 
 // Use express.js to create the server (mainly for routing)
 const app = express();
