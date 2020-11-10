@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2200cef0-81bd-4748-8717-34e1dfb74493" name="Default Changelist" comment="Max uses https now :)">
+      <change afterPath="$PROJECT_DIR$/web-app/Procfile" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1igsth2bx73WB1WMAdaa1vbNYPV" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/web-app" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="NodeJSConfigurationType" path-to-js-file="app.js" working-dir="$PROJECT_DIR$/web-app">
+      <method v="2" />
+    </configuration>
+    <configuration name="app.js" type="NodeJSConfigurationType" nameIsGenerated="true" path-to-js-file="app.js" working-dir="$PROJECT_DIR$/web-app">
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2200cef0-81bd-4748-8717-34e1dfb74493" name="Default Changelist" comment="" />
+      <created>1602340787061</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1602340787061</updated>
+      <workItem from="1602340788733" duration="9126000" />
+      <workItem from="1602506531033" duration="8597000" />
+      <workItem from="1602522532956" duration="17974000" />
+      <workItem from="1602587478149" duration="6464000" />
+      <workItem from="1602676494332" duration="196000" />
+      <workItem from="1602772213177" duration="2596000" />
+      <workItem from="1603633793689" duration="3776000" />
+      <workItem from="1605015756024" duration="10364000" />
+    </task>
+    <task id="LOCAL-00001" summary="Remove react, add livestream on hiro-marker detection">
+      <created>1602625451817</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1602625451817</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Remove local https certificate files">
+      <created>1602775692143</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1602775692143</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Max uses https now :)">
+      <created>1603637798099</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1603637798099</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Remove react, add livestream on hiro-marker detection" />
+    <MESSAGE value="Remove local https certificate files" />
+    <MESSAGE value="Max uses https now :)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Max uses https now :)" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="385" y="-1047" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602775608246">
+      <screen x="-360" y="-1417" width="2560" height="1417" />
+    </state>
+    <state x="385" y="-1047" key="#com.intellij.execution.impl.EditConfigurationsDialog/-360.-1417.2560.1417/0.23.1792.1097@-360.-1417.2560.1417" timestamp="1602775608246" />
+    <state x="652" y="-900" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605034863703">
+      <screen x="-360" y="-1417" width="2560" height="1417" />
+    </state>
+    <state x="652" y="-900" key="#com.intellij.fileTypes.FileTypeChooser/-360.-1417.2560.1417/0.23.1792.1097@-360.-1417.2560.1417" timestamp="1605034863703" />
+    <state x="658" y="-955" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1602344620288">
+      <screen x="-360" y="-1417" width="2560" height="1417" />
+    </state>
+    <state x="658" y="-955" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-360.-1417.2560.1417/0.23.1792.1097@-360.-1417.2560.1417" timestamp="1602344620288" />
+    <state width="2539" height="409" key="GridCell.Tab.0.bottom" timestamp="1602777401480">
+      <screen x="-360" y="-1417" width="2560" height="1417" />
+    </state>
+    <state width="2539" height="409" key="GridCell.Tab.0.bottom/-360.-1417.2560.1417/0.23.1792.1097@-360.-1417.2560.1417" timestamp="1602777401480" />
+    <state width="2539" height="409" key="GridCell.Tab.0.center" timestamp="1602777401480">
+      <screen x="-360" y="-1417" width="2560" height="1417" />
+    </state>
+    <state width="2539" height="409" key="GridCell.Tab.0.center/-360.-1417.2560.1417/0.23.1792.1097@-360.-1417.2560.1417" timestamp="1602777401480" />
+    <state width="2539" height="409" key="GridCell.Tab.0.left" timestamp="1602777401480">
+      <screen x="-360" y="-1417" width="2560" height="1417" />
+    </state>
+    <state width="2539" height="409" key="GridCell.Tab.0.left/-360.-1417.2560.1417/0.23.1792.1097@-360.-1417.2560.1417" timestamp="1602777401480" />
+    <state width="2539" height="409" key="GridCell.Tab.0.right" timestamp="1602777401480">
+      <screen x="-360" y="-1417" width="2560" height="1417" />
+    </state>
+    <state width="2539" height="409" key="GridCell.Tab.0.right/-360.-1417.2560.1417/0.23.1792.1097@-360.-1417.2560.1417" timestamp="1602777401480" />
+    <state x="429" y="-1070" key="SettingsEditor" timestamp="1602345590981">
+      <screen x="-360" y="-1417" width="2560" height="1417" />
+    </state>
+    <state x="429" y="-1070" key="SettingsEditor/-360.-1417.2560.1417/0.23.1792.1097@-360.-1417.2560.1417" timestamp="1602345590981" />
+    <state x="520" y="-969" key="Vcs.Push.Dialog.v2" timestamp="1603637800332">
+      <screen x="-360" y="-1417" width="2560" height="1417" />
+    </state>
+    <state x="520" y="-969" key="Vcs.Push.Dialog.v2/-360.-1417.2560.1417/0.23.1792.1097@-360.-1417.2560.1417" timestamp="1603637800332" />
+    <state x="-259" y="-1317" width="2360" height="1217" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1602545011474">
+      <screen x="-360" y="-1417" width="2560" height="1417" />
+    </state>
+    <state x="-259" y="-1317" width="2360" height="1217" key="com.intellij.history.integration.ui.views.FileHistoryDialog/-360.-1417.2560.1417/0.23.1792.1097@-360.-1417.2560.1417" timestamp="1602545011474" />
+    <state x="491" y="-1104" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1602514816040">
+      <screen x="-360" y="-1417" width="2560" height="1417" />
+    </state>
+    <state x="491" y="-1104" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/-360.-1417.2560.1417/0.23.1792.1097@-360.-1417.2560.1417" timestamp="1602514816040" />
+    <state x="725" y="-788" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605015768332">
+      <screen x="-360" y="-1417" width="2560" height="1417" />
+    </state>
+    <state x="725" y="-788" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/-360.-1417.2560.1417/0.23.1792.1097@-360.-1417.2560.1417" timestamp="1605015768332" />
+    <state x="628" y="-1120" width="586" height="822" key="find.popup" timestamp="1602526263006">
+      <screen x="-360" y="-1417" width="2560" height="1417" />
+    </state>
+    <state x="628" y="-1120" width="586" height="822" key="find.popup/-360.-1417.2560.1417/0.23.1792.1097@-360.-1417.2560.1417" timestamp="1602526263006" />
+    <state x="585" y="-1092" key="search.everywhere.popup" timestamp="1602624027964">
+      <screen x="-360" y="-1417" width="2560" height="1417" />
+    </state>
+    <state x="585" y="-1092" key="search.everywhere.popup/-360.-1417.2560.1417/0.23.1792.1097@-360.-1417.2560.1417" timestamp="1602624027964" />
+  </component>
+</project>
