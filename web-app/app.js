@@ -49,7 +49,8 @@ if(ISDEV){
 }
  else {
      console.log("onlineee");
-     app.listen(port);
+     // Heroku assigns ports automagically
+     app.listen(process.env.PORT || port);
 }
 
 // If we ever want to stream video from the server's filesystem
