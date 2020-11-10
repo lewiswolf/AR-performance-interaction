@@ -10,13 +10,6 @@ let ISDEV = false;
 // Server port
 const port = 4000;
 
-// Local private key and certificate for hosting over HTTPS locally
-const privateKey = fs.readFileSync('key.pem', 'utf8');
-const certificate = fs.readFileSync('cert.pem', 'utf8');
-
-// Create credentials object
-const credentials = { key: privateKey, cert: certificate };
-
 // Use express.js to create the server (mainly for routing)
 const app = express();
 
@@ -43,6 +36,14 @@ app.get('/', (req, res) => {
 
 if(ISDEV){
     console.log("local");
+
+    // Local private key and certificate for hosting over HTTPS locally
+    const privateKey = fs.readFileSync('key.pem', 'utf8');
+    const certificate = fs.readFileSync('cert.pem', 'utf8');
+
+    // Create credentials object
+    const credentials = { key: privateKey, cert: certificate };
+
     const httpsServer = https.createServer(credentials, app);
     httpsServer.listen(port);
 }
