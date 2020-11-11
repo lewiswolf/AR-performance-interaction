@@ -5,7 +5,7 @@ const path = require('path')
 const express = require('express');
 
 // Dev or production
-let ISDEV = false;
+let ISDEV = true;
 
 // Server port
 const port = ISDEV ? 4000 : 5000;
