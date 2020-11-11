@@ -74,8 +74,7 @@ const addGyroListener = (() => {
     const setStyles = (bool) => {
         element.innerText = `Gyroscope ${bool ? 'Listening' : 'Off'}`
         Object.assign(element.style, {
-            color: bool ? 'slategrey' : 'whitesmoke',
-            background: bool ? 'palegreen' : 'palevioletred'
+            background: bool ? '#9cff57' : '#ff7961'
         })
     }
 
@@ -160,8 +159,7 @@ const addAccelListener = (() => {
     const setStyles = (bool) => {
         element.innerText = `Accelerometer ${bool ? 'Listening' : 'Off'}`
         Object.assign(element.style, {
-            color: bool ? 'slategrey' : 'whitesmoke',
-            background: bool ? 'palegreen' : 'palevioletred'
+            background: bool ? '#9cff57' : '#ff7961'
         })
     }
 

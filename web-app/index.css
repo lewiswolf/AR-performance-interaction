@@ -22,6 +22,7 @@ button {
 	display: inline-block;
 	text-align: center;
 	vertical-align: middle;
+	color: black;
 	font-size: 14px;
 	font-family: inherit;
 	position: absolute;
