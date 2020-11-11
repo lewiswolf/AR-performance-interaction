@@ -14,12 +14,6 @@ a-scene > div.a-enter-vr > button {
 	display: none;
 }
 
-/* fix the dumb permission buttons */
-/* div.a-modal button {
-	height: 60px !important;
-	width: calc(50% - 2px) !important;
-} */
-
 /* hide initial ar */
 #video {
 	visibility: hidden;
