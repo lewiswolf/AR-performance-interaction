@@ -5,11 +5,11 @@ window.onload = () => {
 
 // Vidhandler toggles visibility of live-streamed video
 AFRAME.registerComponent('vidhandler', {
-    init: () => {
+    init: function () {
         this.toggle = false
         this.vid = document.querySelector('video')
     },
-    tick: () => {
+    tick: function () {
         if (this.el.object3D.visible === true) {
             if (!this.toggle) {
                 this.toggle = true
