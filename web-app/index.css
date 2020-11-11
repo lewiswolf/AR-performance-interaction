@@ -6,11 +6,17 @@ html {
 	display: flex;
 	position: fixed;
 	overflow: hidden;
+	touch-action: none;
 }
 
 /* hide vr button */
 a-scene > div.a-enter-vr > button {
 	display: none;
+}
+
+/* hide initial ar */
+#video {
+	visibility: hidden;
 }
 
 /* my buttons */
@@ -36,8 +42,4 @@ button:first-of-type {
 
 button:last-of-type {
 	right: 0;
-}
-
-#video {
-	visibility: hidden;
 }

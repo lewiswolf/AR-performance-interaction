@@ -1,8 +1,3 @@
-window.onload = () => {
-    // Hide livestream video initially
-    document.querySelector('video').style.visibility = 'hidden'
-}
-
 // Vidhandler toggles visibility of live-streamed video
 AFRAME.registerComponent('vidhandler', {
     init: function () {
