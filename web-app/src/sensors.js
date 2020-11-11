@@ -1,8 +1,6 @@
 // set the polling rate for the sensors in ms
 const pollingRate = 100
 
-// there should be another button you click to start the app and grant all the permissions
-
 /* 
     GYRO
 */
@@ -34,12 +32,17 @@ const addGyroListener = (() => {
         }
     }
 
-    const downListener = () => {
+    const downListener = async () => {
         setStyles(true)
         // add mouseup listeners
         element.addEventListener('touchend', upListener)
         element.addEventListener('touchcancel', upListener)
         window.addEventListener('mouseup', upListener)
+
+        // if !permission, request it!
+        if (!permissionState && typeof DeviceOrientationEvent.requestPermission === 'function') {
+            permissionState = await DeviceOrientationEvent.requestPermission()
+        }
 
         if (permissionState) {
             const post2server = () => {
@@ -51,12 +54,7 @@ const addGyroListener = (() => {
         }
     }
 
-    const upListener = async () => {
-        // if !permission, request it!
-        if (!permissionState && typeof DeviceOrientationEvent.requestPermission === 'function') {
-            permissionState = await DeviceOrientationEvent.requestPermission()
-        }
-
+    const upListener = () => {
         // stop timer and remove listener
         if (permissionState) {
             clearInterval(timer)
@@ -119,12 +117,17 @@ const addAccelListener = (() => {
         }
     }
 
-    const downListener = () => {
+    const downListener = async () => {
         setStyles(true)
         // add mouseup listeners
         element.addEventListener('touchend', upListener)
         element.addEventListener('touchcancel', upListener)
         window.addEventListener('mouseup', upListener)
+
+        // if !permission, request it!
+        if (!permissionState && typeof DeviceMotionEvent.requestPermission === 'function') {
+            permissionState = await DeviceMotionEvent.requestPermission()
+        }
 
         if (permissionState) {
             const post2server = () => {
@@ -136,12 +139,7 @@ const addAccelListener = (() => {
         }
     }
 
-    const upListener = async () => {
-        // if !permission, request it!
-        if (!permissionState && typeof DeviceMotionEvent.requestPermission === 'function') {
-            permissionState = await DeviceMotionEvent.requestPermission()
-        }
-
+    const upListener = () => {
         // stop timer and remove listener
         if (permissionState) {
             clearInterval(timer)
