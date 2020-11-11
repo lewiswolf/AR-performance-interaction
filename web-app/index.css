@@ -14,13 +14,19 @@ a-scene > div.a-enter-vr > button {
 	display: none;
 }
 
+/* fix the dumb permission buttons */
+/* div.a-modal button {
+	height: 60px !important;
+	width: calc(50% - 2px) !important;
+} */
+
 /* hide initial ar */
 #video {
 	visibility: hidden;
 }
 
 /* my buttons */
-button {
+body > button {
 	height: 50px;
 	width: 50%;
 	outline: 0;
@@ -36,10 +42,10 @@ button {
 	bottom: 0;
 }
 
-button:first-of-type {
+body > button:first-of-type {
 	left: 0;
 }
 
-button:last-of-type {
+body > button:last-of-type {
 	right: 0;
 }
