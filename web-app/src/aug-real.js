@@ -1,6 +1,8 @@
 window.onload = () => {
     // Hide livestream video initially
     document.querySelector('video').style.visibility = 'hidden'
+    document.getElementsByTagName(html).style.height = '100%'
+    document.getElementsByTagName(html).style.width = '100%'
 }
 
 // Vidhandler toggles visibility of live-streamed video
