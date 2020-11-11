@@ -5,7 +5,7 @@ const path = require('path')
 const express = require('express');
 
 // Dev or production
-let ISDEV = false;
+let ISDEV = true;
 
 // Server port
 const port = ISDEV ? 4000 : 5000;
@@ -16,11 +16,7 @@ const app = express();
 // express uses this directory for all subsequent requests
 app.use(express.static(__dirname));
 
-// Lay down standard route
-app.get('/', (req, res) => {
-    // Be nice and greet
-    console.log("hello");
-
+app.use(function(req, res, next){
     // Allow streaming content of any kind
     // Website you wish to allow to connect
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -28,6 +24,15 @@ app.get('/', (req, res) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     // // Request headers you wish to allow
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With, X-Api-Key');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    next();
+});
+
+// Lay down standard route
+app.get('/', (req, res) => {
+    // Be nice and greet
+    console.log("hello");
 
     // Send the index.html file as response
     // res.writeHead(200, { 'content-type': 'text/html' });
