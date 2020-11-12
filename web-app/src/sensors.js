@@ -1,12 +1,29 @@
 // set the polling rate for the sensors in ms
 const pollingRate = 100
+
+/*
+    User IDs
+*/
+
 let userID = null
 
+const returnUserID = () => {
+    axios.post('/user-id', { userID })
+}
+
+// request user ID
 const getUserID = (() => {
     axios.get('/user-id').then(res => {
-        userID = res.data
+        userID = res.data.id
     })
 })()
+
+
+// return user ID
+window.onbeforeunload = () => {
+    axios.post('/user-id', { userID })
+}
+
 
 /* 
     GYRO

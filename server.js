@@ -63,21 +63,22 @@ const generateIdArr = (len) => {
     return arr
 }
 
-const numOfUniqueUsers = 20
-let idArr = []
+const numOfUniqueUsers = 30
+let idArr = generateIdArr(numOfUniqueUsers)
 
 app.get('/user-id', (req, res) => {
-    // fill the idArr when it's empty
-    if (!idArr.length) {
-        idArr = generateIdArr(numOfUniqueUsers)
-    }
-
     // retrieve a random id from the array
     let rand = Math.round(Math.random() * (idArr.length - 1))
     res.json({ id: idArr[rand] })
 
     // remove id from the array
     idArr.splice(rand, 1)
+})
+
+app.post('/user-id', (req, res) => {
+    idArr.push(req.body.userID)
+    res.json({ msg: 'success' })
+    Max.post(idArr.length)
 })
 
 /*
