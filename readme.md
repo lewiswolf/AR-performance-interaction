@@ -4,11 +4,10 @@ to build this project
 $ npm i
 $ cd ./web-app
 $ npm i
-$ npm start
 ```
 
 lastly add the max msp dependencies to your packages folder
 
 -   [shell](https://github.com/jeremybernstein/shell/releases/tag/1.0b2)
 
-then open index.maxpat :)
+then open index.amxd :)
