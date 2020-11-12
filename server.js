@@ -50,6 +50,40 @@ app.use(express.static(path.join(__dirname, 'web-app')))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+/*
+    ASSIGN USERS IDS
+    this should be moved to the real server, but I can't test both at once still...
+*/
+
+const generateIdArr = (len) => {
+    let arr = []
+    for (let i = 0; i < len; i++) {
+        arr.push(i + 1)
+    }
+    return arr
+}
+
+const numOfUniqueUsers = 20
+let idArr = []
+
+app.get('/user-id', (req, res) => {
+    // fill the idArr when it's empty
+    if (!idArr.length) {
+        idArr = generateIdArr(numOfUniqueUsers)
+    }
+
+    // retrieve a random id from the array
+    let rand = Math.round(Math.random() * (idArr.length - 1))
+    res.json({ id: idArr[rand] })
+
+    // remove id from the array
+    idArr.splice(rand, 1)
+})
+
+/*
+    END
+*/
+
 app.post('/', (req, res) => {
     Max.outlet(req.body)
     res.json({ msg: 'success' })

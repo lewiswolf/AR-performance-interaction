@@ -1,5 +1,12 @@
 // set the polling rate for the sensors in ms
 const pollingRate = 100
+let userID = null
+
+const getUserID = (() => {
+    axios.get('/user-id').then(res => {
+        userID = res.data
+    })
+})()
 
 /* 
     GYRO
@@ -46,7 +53,7 @@ const addGyroListener = (() => {
 
         if (permissionState) {
             const post2server = () => {
-                axios.post('/', deviceOrientation)
+                axios.post('/', Object.assign(userID, deviceOrientation))
             }
             // add listener and start sending
             window.addEventListener('deviceorientation', getDeviceOrientation)
@@ -131,7 +138,7 @@ const addAccelListener = (() => {
 
         if (permissionState) {
             const post2server = () => {
-                axios.post('/', deviceMotion)
+                axios.post('/', Object.assign(userID, deviceMotion))
             }
             // add listener and start sending
             window.addEventListener('devicemotion', getDeviceMotion)
