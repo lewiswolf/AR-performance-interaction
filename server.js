@@ -47,6 +47,12 @@ app.use(express.static(path.join(__dirname, 'web-app')))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.post('/params', (req, res) => {
+    Max.outlet(req.body)
+    res.json({ msg: 'success' })
+})
+
+
 /*
     ASSIGN USERS IDS
     this should be moved to the real server, but I can't test both at once still...
@@ -60,8 +66,8 @@ const generateIdArr = (len) => {
     return arr
 }
 
-const numOfUniqueUsers = 30
-let idArr = generateIdArr(numOfUniqueUsers)
+const numUniqueUsers = 30
+let idArr = generateIdArr(numUniqueUsers)
 
 app.get('/user-id', (req, res) => {
     // retrieve a random id from the array
@@ -72,7 +78,7 @@ app.get('/user-id', (req, res) => {
 
         // remove id from the array
         idArr.splice(rand, 1)
-        Max.post(`${idArr.length} devices connected`)
+        Max.post(`${numUniqueUsers - idArr.length} devices connected`)
     } else {
         res.json({ id: 0 })
     }
@@ -82,14 +88,14 @@ app.post('/user-id', (req, res) => {
     idArr.push(req.body.userID)
     res.json({ msg: 'success' })
     Max.post(`id ${req.body.userID} disconnected`)
+    Max.post(`${numUniqueUsers - idArr.length} devices connected`)
 })
 
 /*
     END
 */
 
-app.post('/', (req, res) => {
-    Max.outlet(req.body)
-    res.json({ msg: 'success' })
-})
 
+app.post('*', (req, res) => {
+    console.log('fuuuuuuuuuuck')
+})
