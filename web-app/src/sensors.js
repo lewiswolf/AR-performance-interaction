@@ -5,20 +5,26 @@ let permissionState = null
 let userID = 0;
 
 (async () => {
+    // return user ID
     try {
         if (!permissionState && typeof DeviceOrientationEvent.requestPermission === 'function') {
             permissionState = await DeviceOrientationEvent.requestPermission()
         }
-        const res = await axios.get('/user-id');
-        userID = res.data.id
-    } catch (e) {
-        userID = 0
+    } catch { }
+
+    try {
+        if (sessionStorage.getItem('userID')) {
+            await axios.post('/user-id', { id: sessionStorage.getItem('userID') })
+            sessionStorage.clear()
+        }
+        const res = await axios.get('/user-id')
+        sessionStorage.setItem('userID', res.data.id)
+    } catch {
+        sessionStorage.setItem('userID', 0)
     } finally {
+        const userID = sessionStorage.getItem('userID')
         if (userID) {
-            // return user ID
-            window.onunload = () => {
-                axios.post('/user-id', { id: userID })
-            }
+            // window.addEventListener('beforeunload', freeUserID)
 
             let element = document.getElementById('gyroButton')
             let timer // empty setInterval
@@ -62,8 +68,8 @@ let userID = 0;
                 }
 
                 if (permissionState) {
-                    const post2server = async () => {
-                        await axios.post('/params', Object.assign({ id: userID }, deviceOrientation))
+                    const post2server = () => {
+                        axios.post('/params', Object.assign({ id: userID }, deviceOrientation))
                     }
                     // add listener and start sending
                     window.addEventListener('deviceorientation', getDeviceOrientation)

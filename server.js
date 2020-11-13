@@ -85,17 +85,12 @@ app.get('/user-id', (req, res) => {
 })
 
 app.post('/user-id', (req, res) => {
-    idArr.push(req.body.userID)
+    idArr.push(req.body.id)
     res.json({ msg: 'success' })
-    Max.post(`id ${req.body.userID} disconnected`)
+    Max.post(`id ${req.body.id} disconnected`)
     Max.post(`${numUniqueUsers - idArr.length} devices connected`)
 })
 
 /*
     END
 */
-
-
-app.post('*', (req, res) => {
-    console.log('fuuuuuuuuuuck')
-})
