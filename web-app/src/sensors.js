@@ -5,7 +5,7 @@ let permissionState = null
 let userID = 0;
 
 (async () => {
-    // return user ID
+    // check permissions initially
     try {
         if (!permissionState && typeof DeviceOrientationEvent.requestPermission === 'function') {
             permissionState = await DeviceOrientationEvent.requestPermission()
@@ -13,10 +13,12 @@ let userID = 0;
     } catch { }
 
     try {
+        // return user id if one already exists
         if (sessionStorage.getItem('userID')) {
             await axios.post('/user-id', { id: sessionStorage.getItem('userID') })
             sessionStorage.clear()
         }
+        // request user id
         const res = await axios.get('/user-id')
         sessionStorage.setItem('userID', res.data.id)
     } catch {
@@ -24,8 +26,6 @@ let userID = 0;
     } finally {
         const userID = sessionStorage.getItem('userID')
         if (userID) {
-            // window.addEventListener('beforeunload', freeUserID)
-
             let element = document.getElementById('gyroButton')
             let timer // empty setInterval
             let deviceOrientation = {
