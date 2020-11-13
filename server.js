@@ -24,9 +24,6 @@ httpsServer.listen(port, Max ? Max.post(`listening on port ${port}`) : console.l
 
 // Lay down standard route
 app.get('/', (req, res) => {
-    // Be nice and greet
-    Max ? Max.post("hello") : console.log('hello');
-
     // Allow streaming content of any kind
     // Website you wish to allow to connect
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -68,17 +65,23 @@ let idArr = generateIdArr(numOfUniqueUsers)
 
 app.get('/user-id', (req, res) => {
     // retrieve a random id from the array
-    let rand = Math.round(Math.random() * (idArr.length - 1))
-    res.json({ id: idArr[rand] })
+    if (idArr) {
+        let rand = Math.round(Math.random() * (idArr.length - 1))
+        res.json({ id: idArr[rand] })
+        Max.post(`id ${idArr[rand]} is now in use`)
 
-    // remove id from the array
-    idArr.splice(rand, 1)
+        // remove id from the array
+        idArr.splice(rand, 1)
+        Max.post(`${idArr.length} devices connected`)
+    } else {
+        res.json({ id: 0 })
+    }
 })
 
 app.post('/user-id', (req, res) => {
     idArr.push(req.body.userID)
     res.json({ msg: 'success' })
-    Max.post(idArr.length)
+    Max.post(`id ${req.body.userID} disconnected`)
 })
 
 /*

@@ -1,113 +1,106 @@
 // set the polling rate for the sensors in ms
 const pollingRate = 100
 
-/*
-    User IDs
-*/
+let permissionState = null
+let userID = 0;
 
-let userID = null
-
-const returnUserID = () => {
-    axios.post('/user-id', { userID })
-}
-
-// request user ID
-const getUserID = (() => {
-    axios.get('/user-id').then(res => {
-        userID = res.data.id
-    })
-})()
-
-
-// return user ID
-window.onbeforeunload = () => {
-    axios.post('/user-id', { userID })
-}
-
-
-/* 
-    GYRO
-*/
-
-let deviceOrientation = {
-    alpha: null,
-    beta: null,
-    gamma: null,
-}
-
-const getDeviceOrientation = (e) => {
-    deviceOrientation = {
-        alpha: e.alpha,
-        beta: e.beta,
-        gamma: e.gamma,
-    }
-}
-
-// button constructor
-const addGyroListener = (() => {
-    let element = document.getElementById('gyroButton')
-    let timer // empty setInterval
-    let permissionState = null // permissions for listener
-
-    const touchWrapper = (e) => {
-        if (e.cancelable) {
-            e.preventDefault()
-            downListener()
-        }
-    }
-
-    const downListener = async () => {
-        setStyles(true)
-        // add mouseup listeners
-        element.addEventListener('touchend', upListener)
-        element.addEventListener('touchcancel', upListener)
-        window.addEventListener('mouseup', upListener)
-
-        // if !permission, request it!
+(async () => {
+    try {
         if (!permissionState && typeof DeviceOrientationEvent.requestPermission === 'function') {
             permissionState = await DeviceOrientationEvent.requestPermission()
         }
-
-        if (permissionState) {
-            const post2server = () => {
-                axios.post('/', Object.assign(userID, deviceOrientation))
+        const res = await axios.get('/user-id');
+        userID = res.data.id
+    } catch (error) {
+        userID = 0
+    } finally {
+        if (userID) {
+            // return user ID
+            window.onbeforeunload = () => {
+                axios.post('/user-id', { userID })
             }
-            // add listener and start sending
-            window.addEventListener('deviceorientation', getDeviceOrientation)
-            timer = setInterval(post2server, pollingRate)
+
+            let element = document.getElementById('gyroButton')
+            let timer // empty setInterval
+            let deviceOrientation = {
+                alpha: null,
+                beta: null,
+                gamma: null,
+            }
+
+            const getDeviceOrientation = (e) => {
+                deviceOrientation = {
+                    alpha: e.alpha,
+                    beta: e.beta,
+                    gamma: e.gamma,
+                }
+            }
+
+            const touchWrapper = (e) => {
+                if (e.cancelable) {
+                    e.preventDefault()
+                    downListener()
+                }
+            }
+
+            const downListener = async () => {
+                setStyles(true)
+                // add mouseup listeners
+                element.addEventListener('touchend', upListener)
+                element.addEventListener('touchcancel', upListener)
+                window.addEventListener('mouseup', upListener)
+
+                // if !permission, request it!
+                if (!permissionState && typeof DeviceOrientationEvent.requestPermission === 'function') {
+                    permissionState = await DeviceOrientationEvent.requestPermission()
+                }
+
+                if (permissionState) {
+                    const post2server = () => {
+                        axios.post('/', Object.assign(userID, deviceOrientation))
+                    }
+                    // add listener and start sending
+                    window.addEventListener('deviceorientation', getDeviceOrientation)
+                    timer = setInterval(post2server, pollingRate)
+                }
+            }
+
+            const upListener = () => {
+                // stop timer and remove listener
+                if (permissionState) {
+                    clearInterval(timer)
+                    removeEventListener('deviceorientation', getDeviceOrientation)
+                }
+                setStyles(false)
+
+                // remove mouseup listeners
+                element.removeEventListener('touchend', upListener)
+                element.removeEventListener('touchcancel', upListener)
+                window.removeEventListener('mouseup', upListener)
+            }
+
+            const setStyles = (bool) => {
+                element.innerText = `Gyroscope ${bool ? 'Listening' : 'Off'}`
+                Object.assign(element.style, {
+                    background: bool ? '#9cff57' : '#ff7961'
+                })
+            }
+
+            setStyles(false)
+
+            // add default listeners
+            element.addEventListener('touchstart', touchWrapper)
+            element.addEventListener('touchmove', (e) => e.preventDefault())
+            element.addEventListener('mousedown', downListener)
+        } else {
+            let element = document.getElementById('gyroButton')
+            element.innerText = 'Not available'
+            Object.assign(element.style, {
+                background: '#b0bec5'
+            })
         }
     }
-
-    const upListener = () => {
-        // stop timer and remove listener
-        if (permissionState) {
-            clearInterval(timer)
-            removeEventListener('deviceorientation', getDeviceOrientation)
-        }
-
-        setStyles(false)
-
-        // remove mouseup listeners
-        element.removeEventListener('touchend', upListener)
-        element.removeEventListener('touchcancel', upListener)
-        window.removeEventListener('mouseup', upListener)
-    }
-
-    const setStyles = (bool) => {
-        element.innerText = `Gyroscope ${bool ? 'Listening' : 'Off'}`
-        Object.assign(element.style, {
-            background: bool ? '#9cff57' : '#ff7961'
-        })
-    }
-
-    // add default listeners
-    element.addEventListener('touchstart', touchWrapper)
-    element.addEventListener('touchmove', (e) => e.preventDefault())
-    element.addEventListener('mousedown', downListener)
-    // set default text
-    setStyles(false)
 })()
-
 
 /*
     ROTATIOM
