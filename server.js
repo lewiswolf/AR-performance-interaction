@@ -91,6 +91,8 @@ app.post('/user-id', (req, res) => {
     Max.post(`${numUniqueUsers - idArr.length} devices connected`)
 })
 
+Max.post('0 devices connected')
+
 /*
     END
 */

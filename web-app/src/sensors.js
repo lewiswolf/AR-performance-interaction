@@ -25,6 +25,12 @@ let userID = 0;
         sessionStorage.setItem('userID', 0)
     } finally {
         const userID = sessionStorage.getItem('userID')
+
+        window.addEventListener('beforeunload', () => {
+            axios.post('/user-id', { id: sessionStorage.getItem('userID') })
+            sessionStorage.clear()
+        })
+
         if (userID) {
             let element = document.getElementById('gyroButton')
             let timer // empty setInterval
