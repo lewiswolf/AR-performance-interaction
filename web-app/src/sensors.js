@@ -148,6 +148,7 @@ const gyroFunc = {
             permissionState = await DeviceOrientationEvent.requestPermission()
         }
     } catch { } finally {
+        // if a user Id exists, set the style, if not request one
         if (cookies?.userID) {
             gyroFunc.setState('off')
         } else {

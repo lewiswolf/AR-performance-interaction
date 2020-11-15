@@ -22,7 +22,7 @@ yarn-error.log*
 *.pem
 unused
 todo.md
-
+test-dict.json
 
 # Webstorm
 .idea
