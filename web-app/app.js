@@ -127,6 +127,10 @@ app.post('/params', (req, res) => {
 
 console.log(`${allParams.devicesConnected.length} devices connected`)
 
+app.get('/maxmps', (req, res) => {
+    res.json(allParams)
+})
+
 // If we ever want to stream video from the server's filesystem
 // app.get('/video', function(req, res) {
 //     const path = 'Success.mp4'
