@@ -9,7 +9,6 @@
 	"author": "max graf & lewis wolf",
 	"license": "ISC",
 	"dependencies": {
-		"body-parser": "^1.19.0",
-		"express": "^4.17.1"
+		"axios": "^0.21.0"
 	}
 }

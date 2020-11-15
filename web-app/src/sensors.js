@@ -122,7 +122,7 @@ const gyroFunc = {
                 gyroFunc.setState('inactive')
             }
         } else {
-            // if the button is inacgtive, request a new key
+            // if the button is inactive, request a new key
             requestUserID()
         }
     },
