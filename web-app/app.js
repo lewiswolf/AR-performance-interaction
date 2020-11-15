@@ -5,7 +5,8 @@ const path = require('path')
 const express = require('express');
 
 // Dev or production
-let ISDEV = true;
+// process.env.port is undefined on localhost, some value on heroku :)
+let ISDEV = process.env.PORT === undefined;
 
 // Server port
 const port = ISDEV ? 4000 : 5000;
