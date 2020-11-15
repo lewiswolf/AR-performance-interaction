@@ -24,7 +24,7 @@ const refreshCookies = () => {
 
 let cookies = refreshCookies();
 let sessionExpires = new Date() // expiry date for cookies
-sessionExpires.setTime(sessionExpires.getTime() + (1 * 24 * 60 * 60 * 1000))
+sessionExpires.setTime(sessionExpires.getTime() + (24 * 60 * 60 * 1000))
 
 const requestUserID = async () => {
     cookies = refreshCookies()
