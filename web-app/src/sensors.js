@@ -97,7 +97,7 @@ const gyroFunc = {
     downListener: async () => {
         if (gyroFunc.state === 'off') {
             cookies = refreshCookies()
-            if (cookies.userID) {
+            if (cookies?.userID) {
                 gyroFunc.setState('on')
                 // add mouseup listeners
                 gyro.addEventListener('touchend', gyroFunc.upListener)
