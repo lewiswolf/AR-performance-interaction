@@ -28,7 +28,7 @@ sessionExpires.setTime(sessionExpires.getTime() + (24 * 60 * 60 * 1000))
 
 const requestUserID = async () => {
     cookies = refreshCookies()
-    if (!cookies?.userID) {
+    if (!cookies?.userID && permissionState) {
         try {
             const res = await axios.get('/user-id')
             document.cookie = `userID=${res.data.id}; expires=${sessionExpires.toGMTString()}`
@@ -152,6 +152,7 @@ const gyroFunc = {
         if (cookies?.userID) {
             gyroFunc.setState('off')
         } else {
+            gyroFunc.setState('inactive')
             requestUserID()
         }
 
