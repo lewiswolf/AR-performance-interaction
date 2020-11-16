@@ -121,7 +121,6 @@ app.post('/params', (req, res) => {
         beta: (req.body.beta + 180) / 360,
         gamma: (req.body.gamma + 90) / 180
     }
-    console.log(allParams)
     res.json({ msg: 'success' })
 })
 
