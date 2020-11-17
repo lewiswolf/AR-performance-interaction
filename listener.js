@@ -2,7 +2,7 @@
 const axios = require('axios')
 const max = require('max-api')
 
-const pollingRate = 1000;
+const pollingRate = 100;
 
 (() => {
     const queryServer = async () => {
