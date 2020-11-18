@@ -99,6 +99,21 @@ app.post('/user-id', (req, res) => {
     PARAMS
 */
 
+const generateAnalyticsParams = () => {
+    let obj = {};
+    for (let i = 0; i < numUniqueUsers; i++) {
+        obj[i + 1] = 0;
+    }
+    return obj;
+}
+
+let analytics = generateAnalyticsParams()
+
+const updateAnalytics = (id) => {
+    analytics[id] = Math.round((analytics[id] + 0.1) * 10) / 10
+    fs.writeFile('analytics.json', JSON.stringify(analytics, null, '\t'), () => { })
+}
+
 const generateEmptyParams = (len) => {
     let obj = {
         devicesConnected: [],
@@ -122,6 +137,7 @@ app.post('/params', (req, res) => {
         gamma: (req.body.gamma + 90) / 180
     }
     res.json({ msg: 'success' })
+    updateAnalytics(req.body.id)
 })
 
 console.log(`${allParams.devicesConnected.length} devices connected`)
