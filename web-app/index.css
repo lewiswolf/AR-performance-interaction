@@ -2,12 +2,18 @@ html {
 	height: 100% !important;
 	width: 100% !important;
 	margin: 0;
+	position: fixed;
 	font-family: helvetica;
-	touch-action: none;
 }
 
-body {
-	height: 100% !important;
+#main {
+	height: 100vh;
+	max-height: 100%;
+	width: 100vw;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
 }
 
 /* hide vr button */
