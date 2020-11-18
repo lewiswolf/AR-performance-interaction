@@ -7,7 +7,7 @@ const pollingRate = 100;
 (() => {
     const queryServer = async () => {
         try {
-            let res = await axios.get('https://border-ar-webapp.herokuapp.com/maxmps')
+            let res = await axios.get('https://border-ar-webapp.herokuapp.com/maxmsp')
             max.outlet(res.data)
         } catch (e) {
             max.post(e)

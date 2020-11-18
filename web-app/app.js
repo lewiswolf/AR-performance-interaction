@@ -126,7 +126,7 @@ app.post('/params', (req, res) => {
 
 console.log(`${allParams.devicesConnected.length} devices connected`)
 
-app.get('/maxmps', (req, res) => {
+app.get('/maxmsp', (req, res) => {
     res.json(allParams)
 })
 
