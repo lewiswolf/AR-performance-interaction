@@ -36,9 +36,6 @@ const requestUserID = async () => {
             document.cookie = `userID=0; expires=${sessionExpires.toGMTString()}`
         } finally {
             cookies = refreshCookies()
-            cookies?.userID && gtag('config', 'GA_MEASUREMENT_ID', {
-                'user_id': cookies.userID
-            });
             gyroFunc.setState(cookies?.userID ? 'off' : 'inactive')
         }
     }
