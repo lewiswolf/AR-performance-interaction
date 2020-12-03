@@ -26,11 +26,13 @@
 	<!-- scripts -->
 	<script src="src/aug-real.js"></script>
 	<script src="src/sensors.js" defer></script>
+	<script src="src/videofilter.js"></script>
 </head>
 
-<body scroll="no">
+<body scroll="no" onload="myFunction()">
 	<noscript>You need to enable JavaScript to run this app.</noscript>
 
+	<canvas id="canvas"></canvas>
 	<!-- user feed -->
 	<video
 		id="video"
@@ -44,10 +46,10 @@
 		muted
 	>
 		<!--  Source is just a demo bloomberg (don't judge) livestream for now  -->
-		<!--		<source-->
-		<!--			src="https://liveprodeuwest.akamaized.net/eu1/Channel-EUTVqvs-AWS-ireland-1/Source-EUTVqvs-700-1_live.m3u8"-->
-		<!--			type="application/x-mpegURL"-->
-		<!--		/>-->
+<!--				<source-->
+<!--					src="https://liveprodeuwest.akamaized.net/eu1/Channel-EUTVqvs-AWS-ireland-1/Source-EUTVqvs-700-1_live.m3u8"-->
+<!--					type="application/x-mpegURL"-->
+<!--				/>-->
 		<source src="https://arperformance.myddns.rocks/hls/stream.m3u8" type="application/x-mpegURL" />
 	</video>
 
