@@ -11,6 +11,6 @@
 	"author": "max graf & lewis wolf",
 	"license": "ISC",
 	"dependencies": {
-		"axios": "^0.21.0"
+		"axios": "^0.21.1"
 	}
 }
